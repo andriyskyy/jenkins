@@ -16,7 +16,7 @@ pipeline {
         stage ('test statement') {
             steps {
                 script {
-                    if (${BRANCH_NAME} == 'development') {
+                    if (env.BRANCH_NAME == 'development') {
                         echo "This is development branch"
                     }
                 }
