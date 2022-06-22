@@ -4,7 +4,10 @@ pipeline {
     environment {
         TEST = "development"
         BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
-        COMMAND = "update"
+        COMMAND = "${params.COMMAND}"
+    }
+    parameters {
+        choice choices: ['update', 'delete', 'create'], description: '''Choose what to do''', name: 'COMMAND'
     }
 
     stages {
