@@ -4,6 +4,7 @@ pipeline {
     environment {
         TEST = "development"
         BRANCH_NAME = "${GIT_BRANCH.split("/")[1]}"
+        COMMAND = "update"
     }
 
     stages {
@@ -19,6 +20,13 @@ pipeline {
                     if (env.BRANCH_NAME == 'development') {
                         echo "This is development branch"
                     }
+                }
+            }
+        }
+        stage ('test makefile variable') {
+            steps {
+                script {
+                    sh 'make test-var'
                 }
             }
         }
